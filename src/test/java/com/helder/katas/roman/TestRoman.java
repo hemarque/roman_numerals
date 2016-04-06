@@ -24,4 +24,8 @@ public class TestRoman {
 		assertEquals("Not expected roman numeral", "II", intToRoman(2));
 	}
 
+	@Test
+	public void testThree() throws Exception {
+		assertEquals("Not expected roman numeral", "III", intToRoman(3));
+	}
 }
