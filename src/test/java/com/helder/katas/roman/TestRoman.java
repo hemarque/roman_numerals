@@ -6,15 +6,15 @@ import org.junit.Test;
 
 public class TestRoman {
 
-	private Object intToRoman(int i) {
+	private Object intToRoman(int decimal) {
+		final int[] baseDecimals = { 5, 4, 1 };
+		final String[] baseRomans = { "V", "IV", "I" };
 		String roman = "";
-		while (i > 3) {
-			roman += "IV";
-			i -= 4;
-		}
-		while (i > 0) {
-			roman += "I";
-			i -= 1;
+		for (int i = 0; i < baseDecimals.length; i++) {
+			while (decimal > (baseDecimals[i] - 1)) {
+				roman += baseRomans[i];
+				decimal -= baseDecimals[i];
+			}
 		}
 
 		return roman;
@@ -38,5 +38,20 @@ public class TestRoman {
 	@Test
 	public void testFour() throws Exception {
 		assertEquals("Not expected roman numeral", "IV", intToRoman(4));
+	}
+
+	@Test
+	public void testFive() throws Exception {
+		assertEquals("Not expected roman numeral", "V", intToRoman(5));
+	}
+
+	@Test
+	public void testSix() throws Exception {
+		assertEquals("Not expected roman numeral", "VI", intToRoman(6));
+	}
+
+	@Test
+	public void testSeven() throws Exception {
+		assertEquals("Not expected roman numeral", "VII", intToRoman(7));
 	}
 }
