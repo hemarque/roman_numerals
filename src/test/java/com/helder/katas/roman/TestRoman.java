@@ -8,9 +8,15 @@ public class TestRoman {
 
 	private Object intToRoman(int i) {
 		String roman = "";
-		while (i-- > 0) {
-			roman += "I";
+		while (i > 3) {
+			roman += "IV";
+			i -= 4;
 		}
+		while (i > 0) {
+			roman += "I";
+			i -= 1;
+		}
+
 		return roman;
 	}
 
@@ -27,5 +33,10 @@ public class TestRoman {
 	@Test
 	public void testThree() throws Exception {
 		assertEquals("Not expected roman numeral", "III", intToRoman(3));
+	}
+
+	@Test
+	public void testFour() throws Exception {
+		assertEquals("Not expected roman numeral", "IV", intToRoman(4));
 	}
 }
